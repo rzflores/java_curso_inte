@@ -76,7 +76,7 @@
                                                ><i class="fas fa-pen"></i></a>
                                         </td>
                                         <td>
-                                            <form action="UsuarioLoginServlet" id="formEliminarUsuario" method="POST" >
+                                            <form action="UsuarioServlet" id="formEliminarUsuario" method="POST" >
                                                 <input type="hidden" name="idUsuario" value="${usuario.getIdusuario()}">
                                                 <input type="hidden" name="codigoUsuario" value="${usuario.getId_paciente()}">
                                                 <input type="hidden" name="accion" value="eliminarUsuario">
@@ -105,7 +105,7 @@
                         <p style="color: #5AC5C3;font-weight: bold;font-size: 30px;" class="modal-title">Nuevo Usuario</p>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="UsuarioLoginServlet" id="formNuevoUsuario" method="POST">
+                    <form action="UsuarioServlet" id="formNuevoUsuario" method="POST">
                     <div class="modal-body">
                         <p style="color:#ffb300; font-weight: bold;font-size: 30px;text-align: center;"> Crea una nuevo usuario</p>
                         <div class="col-12  py-3 px-3">
@@ -125,11 +125,17 @@
                                     <label for="Codespecialidad">Nombre</label>
                                     <input type="text" class="form-control" name="nombre" value="" placeholder="Jhon Doe">
                                 </div>
+                                    <c:if test="${rnombre != null}">
+                                            <p class="text-danger ">${rnombre}</p>
+                                    </c:if> 
                                 <!-- Grupo: Nombre especialidad -->
                                 <div class="form-group">
                                     <label for="especialidad">Apellido Paterno</label>
                                     <input type="text" class="form-control" name="apellido_paterno" value="" placeholder="Pacheco">
                                 </div>
+                                 <c:if test="${rapellido != null}">
+                                            <p class="text-danger ">${rapellido}</p>
+                                </c:if>  
                                 <!-- Grupo: Nombre especialidad -->
                                 <div class="form-group">
                                     <label for="especialidad">Apellido Materno</label>
@@ -193,7 +199,7 @@
                         <p style="color: #5AC5C3;font-weight: bold;font-size: 30px;" class="modal-title">Editar</p>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="UsuarioLoginServlet" id="formEditarUsuario" method="POST">
+                    <form action="UsuarioServlet" id="formEditarUsuario" method="POST">
                     <div class="modal-body">
                         <p style="color:#ffb300; font-weight: bold;font-size: 30px;text-align: center;"> Editemos el usuario</p>
                         <div class="col-12  py-3 px-3">

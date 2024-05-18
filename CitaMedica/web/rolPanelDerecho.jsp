@@ -4,6 +4,9 @@
     Author     : Jonathan
 --%>
 
+<%@page import="dto.Rol"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.impl.daoRolimpl"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +15,11 @@
         <title>JSP Page</title>
     </head>
     <body>
+         <% 
+            daoRolimpl daorol = new daoRolimpl();
+            List<Rol> listaRoles = daorol.rolSel();
+            pageContext.setAttribute("listaRoles", listaRoles);
+        %>
         <!--INICIA Panel principal derecho-->
         <div class="col-md-10 bg-gris">
             <div class="row">
@@ -20,9 +28,9 @@
             </div>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-3"> 
+<!--                    <div class="col-md-3"> 
                         <a class="btn btn-success btn-crear" href="#">Nuevo rol</a>
-                    </div> 
+                    </div> -->
                 </div>
                 <div class="row mt-2 pt-3 bg-light shadow">
                     <div class="container ">
@@ -32,11 +40,18 @@
                                     <th scope="col">Id</th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Descripción</th>
-                                    <th scope="col" colspan="2">Acciones</th>
+<!--                                    <th scope="col" colspan="2">Acciones</th>-->
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                            <c:forEach var="rol" items="${listaRoles}">
+                                <tr> 
+                                    <td>${rol.getIDROL()}</td>
+                                    <td>${rol.getNOMBREROL()}</td>
+                                    <td>${rol.getDESCRIPCION()}</td>
+                                </tr>
+                            </c:forEach>
+<!--                                <tr>
                                     <td>2</td>
                                     <td>Paciente</td>
                                     <td>Es el cliente del negocio</td>
@@ -44,11 +59,11 @@
                                         <a class="btn btn-warning text-light btn-editar" href="#"><i class="fas fa-pen"></i></a>
                                     </td>
                                     <td>
-                                        <!--Usamos button por que no queremos que vaya a ningun lado-->
+                                        Usamos button por que no queremos que vaya a ningun lado
                                         <button class="btn btn-danger mibtn-cancelar" data-id="${ob.idusuario}" ><i class="fas fa-trash"></i></button>
 
                                     </td>
-                                </tr>
+                                </tr>-->
                             </tbody>
                         </table>
                     </div>
